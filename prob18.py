@@ -1,11 +1,12 @@
 #!/usr/bin/python
 import random
+from operator import attrgetter
+
 class Data:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-    def x(s):
-        return s['x']
+
 def randMaker():
     datalist = []
     for i in range(20):
@@ -23,15 +24,12 @@ def randMaker():
                 y = 1
         data = Data(x, y)
         datalist.append(data)
-        #print(data.x)
-        #print(data.y)
     return datalist
-
-def check(list, theta):
-    
-
+#def check(list, theta):
+    #end of check
 datalist = randMaker()
+sorted(datalist, key = attrgetter('x'))
+print(datalist)
+#sortedDatalist = collections.OrderedDict(sorted(datalist.x))
 #datalist.sort()
-
-for i in range(20):
-    print(datalist[i].x, datalist[i].y)
+#print(sortedDtalist)
