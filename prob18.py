@@ -6,6 +6,8 @@ class Data:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+    def __repr__(self):  
+                return repr((self.x, self.y))  
     def printData(self):
         print(self.x, self.y)
 
@@ -25,14 +27,12 @@ def randMaker():
             else:
                 y = 1
         data = Data(x, y)
-        data.printData()
         datalist.append(data)
     return datalist
 #def check(list, theta):
     #end of check
 datalist = randMaker()
-print('----')
-sorted(datalist, key=attrgetter('x'))
+datalist = sorted(datalist, key=attrgetter('x'))
 for i in range(20):
     datalist[i].printData()
 
