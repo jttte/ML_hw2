@@ -21,7 +21,7 @@ def randMaker(n):
             else:
                 y = -1
         else:
-            if n <= 0:
+            if n < 0:
                 y = -1
             else:
                 y = 1
@@ -51,15 +51,18 @@ def check(list):
     #for
     return bestError, bestTheta
 #def check
-totalError = 0;
+totalEin = 0;
+totalEout = 0;
 for i in range(5000):
     datalist = randMaker(20)
     datalist = sorted(datalist, key=attrgetter('x'))
     #for i in range(20):
     #    datalist[i].printData()
     error, theta = check(datalist)
-    totalError = totalError + error
+    totalEin = totalEin + error
+    totalEout = totalEout + 0.2 * abs (theta) / 2 + 0.8 * abs(2-theta) / 2;
 #for
 
-print(totalError/5000)
+print(totalEin/5000)
+print(totalEout/5000)
 
