@@ -2,6 +2,7 @@ from MultiDSA import *
 
 trainData = LoadData('hw2_train.dat')
 testData = LoadData('hw2_test.dat')
-
-print(trainData[0])
-print(trainData[0][0])
+s, i, theta, Ein = MultiDimDS(trainData)
+print(s,i,theta,Ein)
+Eout = CalculateEout(theta, s)
+print(Eout)
