@@ -83,7 +83,7 @@ def MultiDimDS(list):
 	for i in range(N):
 		data = ParseData(list, i)
 		error, theta, s = DecisionStump(data)
-		print(i, error, theta, s)
+		#print(i, error, theta, s)
 		if ( error < bestError ):
 			bestError = error
 			bestDim = i + 1
@@ -108,7 +108,7 @@ def ParseData(list, d):
 #def ParseData
 
 def CalculateEout( theta, s ):
-	Eout = 0.8 * abs (theta) / 2 + 0.2 * abs(2-theta) / 2;
+	Eout = 0.8 * abs (theta) / 2 + 0.2 * abs(2-theta) / 2
 
 	if ( s < 0 ) :
 		Eout = 1 - Eout
@@ -117,6 +117,13 @@ def CalculateEout( theta, s ):
 	return Eout
 #def CalculateEout
 
-#def CountError(dataList, s, theta):
-	#
+def mDecitionStump(dataList, s, theta):
+	error = 0
+	N = len(dataList)
+	for i in range ( N ):
+		if( s * ( dataList[i][0] - theta ) * dataList[i][1]< 0 ):  # y =/= s * sign(x - theta)
+			error += 1
+		#if
+	#for
+	return error / float(N)
 #def CountError
