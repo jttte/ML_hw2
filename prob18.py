@@ -34,13 +34,15 @@ def check(list):
     error = 0;
     bestError = length
     bestTheta = 0;
+    s = 1
+
     for i in range(length):
         if ( list[i].y < 0 ):
             error = error + 1
         #if
     #for
 
-    for i in range(length):
+    for i in range(length-1):
         #theta moves right, so if yi > 0, 
         #it will be misclassified
         error = error + list[i].y
@@ -49,8 +51,36 @@ def check(list):
             bestTheta = i + 1 #theta is placed at the right side of xi
         #if
     #for
-    return bestError, bestTheta
+
+    #s = -1
+    error = 0
+    for i in range(length):
+        if ( list[i].y > 0 ):
+            error = error + 1
+        #if
+    #for
+
+    for i in range(length-1):
+        #theta moves right, so if yi < 0, 
+        #it will be misclassified
+        error = error - list[i].y
+        if ( error < bestError ):
+            bestError = error
+            bestTheta = i + 1 #theta is placed at the right side of xi
+            s = -1
+        #if
+    #for
+
+    #print(bestTheta)
+    if ( bestTheta == 0 ):
+        theta = list[0].x - 0.002
+    else:
+        theta = ( list[bestTheta-1].x + list[bestTheta].x ) / 2
+
+    return s, bestError, theta
 #def check
+
+#main
 totalEin = 0;
 totalEout = 0;
 for i in range(5000):
@@ -58,11 +88,15 @@ for i in range(5000):
     datalist = sorted(datalist, key=attrgetter('x'))
     #for i in range(20):
     #    datalist[i].printData()
-    error, theta = check(datalist)
-    totalEin = totalEin + error
-    totalEout = totalEout + 0.2 * abs (theta) / 2 + 0.8 * abs(2-theta) / 2;
+    s, Ein, theta = check(datalist)
+    totalEin = totalEin + Ein
+    Eout = 0.8 * abs (theta) / 2 + 0.2 * abs(2-theta) / 2;
+    if ( s < 0 ):
+        Eout = 1 - Eout
+    #if
+    totalEout = totalEout + Eout
 #for
 
-print(totalEin/5000)
-print(totalEout/5000)
+print(totalEin/50/20)
+print(totalEout/50)
 
