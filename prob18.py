@@ -90,13 +90,13 @@ for i in range(5000):
     #    datalist[i].printData()
     s, Ein, theta = check(datalist)
     totalEin = totalEin + Ein
-    Eout = 0.8 * abs (theta) / 2 + 0.2 * abs(2-theta) / 2;
+    Eout = 0.8 * abs (theta) / 2 + 0.2 * abs(2-theta) / 2
     if ( s < 0 ):
         Eout = 1 - Eout
     #if
     totalEout = totalEout + Eout
 #for
 
-print(totalEin/50/20)
-print(totalEout/50)
+print(totalEin/50/20.0)
+print(totalEout/50.0)
 
