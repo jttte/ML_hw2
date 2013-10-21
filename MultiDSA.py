@@ -33,7 +33,7 @@ def DecisionStump(list):
 	s = 1
 
 	for i in range(N):
-		if ( list[i][1] <= 0 ):
+		if ( list[i][1] < 0 ):
 			error = error + 1
 		#if
 	#for
@@ -51,7 +51,7 @@ def DecisionStump(list):
 	#s = -1
 	error = 0
 	for i in range(N):
-		if ( list[i][1] >= 0 ):
+		if ( list[i][1] > 0 ):
 			error = error + 1
 		#if
 	#for
@@ -117,5 +117,6 @@ def CalculateEout( theta, s ):
 	return Eout
 #def CalculateEout
 
-def CountError(dataList, s, theta):
+#def CountError(dataList, s, theta):
+	#
 #def CountError
