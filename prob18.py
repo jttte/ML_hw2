@@ -60,6 +60,11 @@ def check(list):
         #if
     #for
 
+    if ( error < bestError ):
+        bestError = error
+        bestTheta = 0
+        s = -1
+
     for i in range(length-1):
         #theta moves right, so if yi < 0, 
         #it will be misclassified
@@ -73,7 +78,7 @@ def check(list):
 
     #print(bestTheta)
     if ( bestTheta == 0 ):
-        theta = list[0].x - 0.002
+        theta = list[0].x - 0.05
     else:
         theta = ( list[bestTheta-1].x + list[bestTheta].x ) / 2
 
@@ -97,6 +102,6 @@ for i in range(5000):
     totalEout = totalEout + Eout
 #for
 
-print(totalEin/50/20.0)
+print(totalEin/50.0/20.0)
 print(totalEout/50.0)
 
