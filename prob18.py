@@ -76,7 +76,7 @@ def check(list):
         #if
     #for
 
-    #print(bestTheta)
+
     if ( bestTheta == 0 ):
         theta = list[0].x - 0.05
     else:
@@ -95,7 +95,7 @@ for i in range(5000):
     #    datalist[i].printData()
     s, Ein, theta = check(datalist)
     totalEin = totalEin + Ein
-    Eout = 0.8 * abs (theta) / 2 + 0.2 * abs(2-theta) / 2
+    Eout = 0.8 * abs (theta) / 2 + 0.2 * ( 2 - abs(theta) ) / 2
     if ( s < 0 ):
         Eout = 1 - Eout
     #if
