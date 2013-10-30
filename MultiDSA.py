@@ -108,7 +108,7 @@ def ParseData(list, d):
 #def ParseData
 
 def CalculateEout( theta, s ):
-	Eout = 0.8 * abs (theta) / 2 + 0.2 * abs(2-theta) / 2
+	Eout = 0.8 * abs (theta) / 2 + 0.2 * ( 2 - abs(theta) ) / 2
 
 	if ( s < 0 ) :
 		Eout = 1 - Eout
